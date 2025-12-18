@@ -1,13 +1,3 @@
-"""Baseline optimization methods for benchmarking.
-
-Provides simple wrappers that use the same `ModelWrapper` interface
-(`param_bounds`, `decode`, `build_model`) to evaluate hyperparameter
-configurations with: random search, grid search (small), and
-Bayesian Optimization via scikit-optimize (skopt).
-
-These functions are lightweight and designed to be used by
-`experiments.benchmark`.
-"""
 from typing import Callable, Dict, List, Tuple
 import time
 import numpy as np

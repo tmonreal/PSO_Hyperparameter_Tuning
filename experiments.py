@@ -74,11 +74,6 @@ def benchmark(model_wrapper_cls,
               baselines_to_run=None,
               baseline_budget=30,
               random_state=0):
-    """Run PSO and baseline optimizers and return a DataFrame with results.
-
-    baselines_to_run: list of strings among {'pso','random','grid','bayes'}
-    baseline_budget: number of iterations/evaluations for baselines
-    """
     if pso_config is None:
         pso_config = dict(
             num_particles=20,
@@ -136,7 +131,7 @@ def benchmark(model_wrapper_cls,
             "runtime": runtime,
         })
 
-    # Grid search (small)
+    # Grid search (chico)
     if "grid" in baselines_to_run:
         t0 = time.time()
         best_pos, best_fit, history = grid_search(model_wrapper_cls, X, y, bounds, n_per_dim=4)
@@ -153,7 +148,7 @@ def benchmark(model_wrapper_cls,
             "runtime": runtime,
         })
 
-    # Bayesian optimization
+    # Optimizacion Bayesiana
     if "bayes" in baselines_to_run:
         if not SKOPT_AVAILABLE:
             raise RuntimeError("scikit-optimize not available; install it to run 'bayes' baseline")
